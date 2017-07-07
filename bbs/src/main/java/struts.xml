@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+	"http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+
+	<package name="default" extends="struts-default,json-default">
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+		<action name="login_*" class="loginAction" method="{1}">
+			<result type="redirectAction">subject_allSubject.action</result>
+			<result name="login">/index.jsp</result>
+		</action>
+		<action name="subject_*" class="subjectAction" method="{1}">
+			<result>/views/subject.jsp</result>
+			<result name="subject_detail">/views/subject_detail.jsp</result>
+			<result name="addPicture" type="json"></result>
+		</action>
+		<action name="comment_*" class="commentAction" method="{1}">
+			<result name="reload" type="json"></result>
+		</action>
+	</package>
+
+</struts>
